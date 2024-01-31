@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Selinux List{% endblock %}
+
+{% block content %}
+    <h2>Zabbix data type 1</h2>
+    <table>
+        <thead>
+            <tr>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in type0_entries %}
+                <tr>
+                    <td>{{ entry.clock }}</td>
+                    <td>{{ entry.host_name }}</td>
+                    <td>{{ entry.item_id }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
