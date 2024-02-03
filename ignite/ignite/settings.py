@@ -57,41 +57,47 @@ WSGI_APPLICATION = 'ignite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-DBUSER = os.environ.get('DASH_DBUSER')
+DBUSER = os.environ.get('IGNITE_DBUSER')
 if not DBUSER:
     DBUSER = 'ignite'
 
-DBPASS = os.environ.get('DASH_DBPASS')
+DBPASS = os.environ.get('IGNITE_DBPASS')
 if not DBPASS:
     DBPASS = 'ignite113'
-DBHOST = os.environ.get('DASH_DBHOST')
+DBHOST = os.environ.get('IGNITE_DBHOST')
 if not DBHOST:
     DBHOST = 'localhost'
 
-DBPORT = os.environ.get('DASH_DBPORT')
+DBPORT = os.environ.get('IGNITE_DBPORT')
 if not DBPORT:
     DBPORT = '5432'
-DBNAME = os.environ.get('DASH_DBNAME')
+DBNAME = os.environ.get('IGNITE_DBNAME')
 if not DBNAME:
     DBNAME = 'ignite'
 
 
+#DATABASES = {
+#            'default': {
+#               'ENGINE': 'django.db.backends.postgresql',
+#               'NAME': DBNAME,
+#               'USER': DBUSER,
+#               'HOST': DBHOST,
+#               'PASSWORD': DBPASS
+#                                                                    }
+#            }
 DATABASES = {
-            'default': {
-               'ENGINE': 'django.db.backends.postgresql',
-               'NAME': DBNAME,
-               'USER': DBUSER,
-               'PASSWORD': DBPASS,
-               'HOST': DBHOST,
-               'PORT': DBPORT,
-                                                                    }
-            }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
 
 
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
-
+#
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

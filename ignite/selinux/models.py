@@ -1,6 +1,6 @@
 from django.db import models
 
-class Selinux(models.Model):
+class host(models.Model):
     hostname = models.CharField(max_length=128, primary_key=True)
     detected = models.DateField()
     updated = models.DateField()
@@ -20,9 +20,9 @@ class Selinux(models.Model):
         return self.hostname
     
     class Meta:
-        db_table = 'selinux'
-        verbose_name = 'Selinux'
-        verbose_name_plural = 'Selinux'
+        db_table = 'host'
+        verbose_name = 'host'
+        verbose_name_plural = 'hosts'
         ordering = ['hostname']
 # the id must auto increment, otherwise the data will be overwritten
 
