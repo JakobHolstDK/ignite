@@ -1,13 +1,17 @@
+import pprint
+
 from django.shortcuts import render
-from .models import metadata
+from django.views.decorators.csrf import csrf_exempt
+from .models import tenant, service, enabled_service
 
 # Create your views here.
 
 
 @csrf_exempt
-def HostList(request):
+def MainView(request):
+    pprint.pprint(request)
     try:
-        host_entries = host.objects.all()
-    except host.DoesNotExist:
-        host_entries = {}
-    return render(request, 'host_list.html', {'host_entries': host_entries})
+        tenant_entries = tenant.objects.all()
+    except tenant.DoesNotExist:
+        tenant_entries = {}
+    return render(request, 'host_list.html', {'host_entries': tenant_entries})

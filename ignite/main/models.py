@@ -1,6 +1,6 @@
 from django.db import models
 
-class metadata(models.Model):
+class tenant(models.Model):
     tenant = models.CharField(max_length=128, primary_key=True)
     logo = models
     about = models.TextField()
@@ -15,10 +15,10 @@ class metadata(models.Model):
         return self.tenant
     
     class Meta:
-        db_table = 'host'
-        verbose_name = 'host'
-        verbose_name_plural = 'hosts'
-        ordering = ['hostname']
+        db_table = 'tenant'
+        verbose_name = 'tenant'
+        verbose_name_plural = 'tenants'
+        ordering = ['tenant']
 
 class service(models.Model):
     name = models.CharField(max_length=128)
