@@ -35,8 +35,8 @@ class service(models.Model):
         verbose_name_plural = 'services'
         ordering = ['name']
 class enabled_service(models.Model):
-    tenant = models.ForeignKey(tenant, on_delete=models.CASCADE)
-    service = models.ForeignKey(service, on_delete=models.CASCADE)
+    tenant = models.ForeignKey(tenant, default=1, verbose_name="Tenant", on_delete=models.SET_DEFAULT)
+    service = models.ForeignKey(service, default=1, verbose_name="Service", on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
