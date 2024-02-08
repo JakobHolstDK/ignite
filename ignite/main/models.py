@@ -36,8 +36,8 @@ class service(models.Model):
         ordering = ['name']
 
 class enabled_service(models.Model):
-    tenant = models.ForeignKey(tenant, on_delete=models.CASCADE)
-    service = models.ForeignKey(service, on_delete=models.CASCADE)
+    tenant = models.ForeignKey(tenant.name, on_delete=models.CASCADE)
+    service = models.ForeignKey(service.name, on_delete=models.CASCADE)
     environtent = models.JSONField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
