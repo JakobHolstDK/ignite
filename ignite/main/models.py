@@ -41,7 +41,7 @@ class enabled_service(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.tenant
+        return self.tenant, self.service
     
     class Meta:
         db_table = 'enabled_service'
