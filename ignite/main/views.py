@@ -14,4 +14,4 @@ def MainView(request):
         tenant_entries = tenant.objects.all()
     except tenant.DoesNotExist:
         tenant_entries = {}
-    return render(request, 'host_list.html', {'host_entries': tenant_entries})
+    return render(request, 'MainView.html', {'tenant': tenant_entries})
