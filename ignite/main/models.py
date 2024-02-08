@@ -39,9 +39,6 @@ class enabled_service(models.Model):
     service = models.ForeignKey(service, default=1, verbose_name="Service", on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.tenant, self.service
     
     class Meta:
         db_table = 'enabled_service'
