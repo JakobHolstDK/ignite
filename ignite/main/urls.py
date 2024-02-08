@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from views import mainview
+from views import MainView
 
 routes = routers.DefaultRouter()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(routes.urls)),
-    path('', mainview,  name='ignite' )
+    path('', MainView,  name='ignite' )
 ]
