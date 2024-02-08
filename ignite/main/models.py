@@ -2,7 +2,7 @@ from django.db import models
 
 class tenant(models.Model):
     tenant = models.CharField(max_length=128, primary_key=True)
-    logo = models
+    logo = models.ImageField(upload_to='logos/', null=True, blank=True)
     about = models.TextField()
     adress = models.CharField(max_length=128)
     phone = models.CharField(max_length=128)
@@ -23,6 +23,7 @@ class tenant(models.Model):
 class service(models.Model):
     name = models.CharField(max_length=128)
     description = models.TextField()
+    environment = models.JSONField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
