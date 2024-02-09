@@ -42,7 +42,8 @@ def MainView(request):
     sessionkey = request.META['CSRF_COOKIE']
     while not r.exists(sessionkey):
         print("waiting for session key")
-        checkvault(sessionkey)
+        if checkvault(sessionkey):
+            r.set(sessionkey, "session key found", ex=600)
     print("session key found")
 
     try:
