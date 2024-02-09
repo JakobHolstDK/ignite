@@ -17,11 +17,11 @@ from .models import tenant, service, enabled_service
 @csrf_exempt
 def MainView(request):
     r = redis.StrictRedis(host='localhost', port=6379, db=0)
-    r.set('foo', 'bar')
-    pprint.pprint(request.META['CSRF_COOKIE'])
+    sessionkey = request.META['CSRF_COOKIE']
+    while not r.exists(sessionkey):
+        print("waiting for session key")
+    print("session key found")
     
-
-
     try:
         tenant_entries = tenant.objects.all()
     except tenant.DoesNotExist:
