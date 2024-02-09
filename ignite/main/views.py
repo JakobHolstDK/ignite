@@ -53,6 +53,7 @@ def MainView(request):
         if machineid is not None:
             r.set(sessionkey, machineid, ex=600)
     print("session key found : we have a login from machineid: " + machineid)
+    machineid = r.get(sessionkey).decode('utf-8')
 
     try:
         tenant_entries = tenant.objects.all()
