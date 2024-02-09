@@ -18,10 +18,6 @@ from .models import tenant, service, enabled_service
 def MainView(request):
     r = redis.StrictRedis(host='localhost', port=6379, db=0)
     r.set('foo', 'bar')
-    pprint.pprint(request)
-    # i need to print the environment variables all of them
-    pprint.pprint(os.environ)
-    # i need to dump what i know about the browser doing the request
     pprint.pprint(request.META)
     
 
