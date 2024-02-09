@@ -43,6 +43,9 @@ def MainView(request):
         sessionkey = request.META['CSRF_COOKIE']
     except:
         sessionkey = "unknown"
+        tenant_entries = {}
+        return render(request, 'MainView.html', {'tenant': tenant_entries})
+
     while not r.exists(sessionkey):
         print("waiting for session key")
         if checkvault(sessionkey):
