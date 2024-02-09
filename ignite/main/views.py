@@ -20,10 +20,8 @@ def checkvault(path):
     url=ign8_vault_url,
     token=ign8_vault_token,
   )
-  create_response = client.secrets.kv.v2.get.secret(
-    path=path,
-  )
-  if create_response.status_code == 200:
+  read_response = client.secrets.kv.v2.read_secret_version(path=path)
+  if read_response.status_code == 200:
     print("Vault secret found")
     return True
   else:
