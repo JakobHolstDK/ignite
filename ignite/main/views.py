@@ -29,16 +29,17 @@ def checkvault(path):
   
   if machineid != "unknown":
     print("Vault secret found : we have a login from machineid: " + machineid)
-    return True
+    return machineid
   else:
     print("Vault secret not found")
-  return  False
+  return  None
 
 
 
 @csrf_exempt
 def MainView(request):
     r = redis.StrictRedis(host='localhost', port=6379, db=0)
+    machineid = "unknown"
     try:
         sessionkey = request.META['CSRF_COOKIE']
     except:
@@ -48,12 +49,13 @@ def MainView(request):
 
     while not r.exists(sessionkey):
         print("waiting for session key")
-        if checkvault(sessionkey):
-            r.set(sessionkey, "session key found", ex=600)
-    print("session key found")
+        machineid = checkvault(sessionkey)
+        if machineid is not None:
+            r.set(sessionkey, machineid, ex=600)
+    print("session key found : we have a login from machineid: " + machineid)
 
     try:
         tenant_entries = tenant.objects.all()
     except tenant.DoesNotExist:
         tenant_entries = {}
-    return render(request, 'MainView.html', {'tenant': tenant_entries})
+    return render(request, 'MainView.html', {"machine_id": machineid, 'tenant': tenant_entries})
