@@ -18,7 +18,7 @@ from .models import tenant, service, enabled_service
 def MainView(request):
     r = redis.StrictRedis(host='localhost', port=6379, db=0)
     r.set('foo', 'bar')
-    pprint.pprint(request.META)
+    pprint.pprint(request.META['CSRF_COOKIE'])
     
 
 
