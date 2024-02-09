@@ -27,7 +27,7 @@ def checkvault(path):
   except:
      machineid = "unknown"
   
-  if machineid is not "unknown":
+  if machineid != "unknown":
     print("Vault secret found : we have a login from machineid: " + machineid)
     return True
   else:
