@@ -22,9 +22,13 @@ def checkvault(path):
   )
   read_response = client.secrets.kv.v2.read_secret_version(path=path)
   pprint.pprint(read_response['data']['data'])
+  try:
+     machineid = read_response['data']['data']['machineid']
+  except:
+     machineid = "unknown"
   
-  if read_response.status_code == 200:
-    print("Vault secret found")
+  if machineid is not "unknown":
+    print("Vault secret found : we have a login from machineid: " + machineid)
     return True
   else:
     print("Vault secret not found")
