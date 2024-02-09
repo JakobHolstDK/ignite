@@ -1,9 +1,5 @@
-<!-- cv/templates/cv/selinux_list.html -->
-
 {% extends 'base.html' %}
-
 {% block title %}Selinux List{% endblock %}
-
 {% block content %}
     <h2>Selinux List</h2>
     <table>
@@ -26,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for entry in selinux_entries %}
+            {% for entry in host_entries %}
                 <tr>
                     <td>{{ entry.hostname }}</td>
                     <td>{{ entry.status }}</td>
@@ -41,7 +37,6 @@
                     <td>{{ entry.total }}</td>
                     <td>{{ entry.success }}</td>
                     <td>{{ entry.failed }}</td>
-                    <td> <a href="{% url 'selinux_messages_by_host_list' pk=entry.hostname %}">Go to Messages</a></td>
                 </tr>
             {% endfor %}
         </tbody>

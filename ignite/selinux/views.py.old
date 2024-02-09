@@ -30,18 +30,6 @@ def host_message_sugestion(request, hostname, message):
     return render(request, 'host_message_suggestion_template.html', context)
 
 
-@csrf_exempt
-def message_list(request, pk=None):
-    if pk:
-        messages = message.objects.filter(hostname=pk)
-    else:
-        messages = message.objects.all()
-    return render(request, 'message_list.html', {'messages': messages})
-
-@csrf_exempt
-def suggestion_list(request, pk=None, message=None):
-    suggestions = suggestion.objects.all()
-    return render(request, 'suggestion_list.html', {'suggestions': suggestions})
 
 
 
