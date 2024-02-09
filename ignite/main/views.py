@@ -39,7 +39,10 @@ def checkvault(path):
 @csrf_exempt
 def MainView(request):
     r = redis.StrictRedis(host='localhost', port=6379, db=0)
-    sessionkey = request.META['CSRF_COOKIE']
+    try:
+        sessionkey = request.META['CSRF_COOKIE']
+    except:
+        sessionkey = "unknown"
     while not r.exists(sessionkey):
         print("waiting for session key")
         if checkvault(sessionkey):
