@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'main',
     'zabbixhistory',
     'selinux',
+    'dash',
 ]
 
 MIDDLEWARE = [

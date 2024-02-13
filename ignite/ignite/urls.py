@@ -22,4 +22,5 @@ urlpatterns = [
     path('',include(('main.urls','main'),namespace='main')),
     path('zabbixhistory/',include(('zabbixhistory.urls','zabbixhistory'),namespace='zabbixhistory')),
     path('selinux/',include(('selinux.urls','selinux'),namespace='selinux')),
+    path('dash/',include(('dash.urls','dash'),namespace='dash')),
 ]
